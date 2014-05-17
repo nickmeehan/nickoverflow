@@ -36,4 +36,23 @@ describe QuestionsController do
     end
   end
 
+  context "#create" do
+    let(:user) { FactoryGirl.create :user }
+    before(:each) do
+      session[:user_id] = user.id
+    end
+
+    it "creates a new question" do
+      params = { question: FactoryGirl.attributes_for(:question) }
+      expect {
+        post :create, params
+      }.to change { Question.count }.to eq(1)
+      expect(response).to be_redirect
+    end
+
+    it "does not create a question with blank fields" do
+
+    end
+  end
+
 end
