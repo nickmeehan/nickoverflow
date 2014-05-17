@@ -23,6 +23,7 @@ class QuestionsController < ApplicationController
 
   def edit
     @question = Question.find(params[:id])
+    @author_id = @question.user.id
   end
 
   def update
