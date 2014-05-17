@@ -29,6 +29,11 @@ describe QuestionsController do
       get :new
       expect(response).to be_success
     end
+
+    it "assigns questions to a new Question" do
+      get :new
+      expect(assigns(:question)).to be_a_new Question
+    end
   end
 
 end
