@@ -1,0 +1,5 @@
+<ul>
+  <% @questions.each do |question| %>
+    <%= render 'shared/question_snippet', question: question %>
+  <% end %>
+</ul>
