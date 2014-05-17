@@ -42,7 +42,7 @@ describe QuestionsController do
       session[:user_id] = user.id
     end
 
-    it "creates a new question" do
+    it "creates a new question with valid attributes" do
       params = { question: FactoryGirl.attributes_for(:question) }
       expect {
         post :create, params
@@ -51,7 +51,10 @@ describe QuestionsController do
     end
 
     it "does not create a question with blank fields" do
-
+      expect {
+        post :create
+      }.not_to change { Question.count }
+      expect(response).not_to be_redirect
     end
   end
 
