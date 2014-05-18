@@ -15,10 +15,10 @@ ActiveRecord::Schema.define(:version => 20140518044053) do
 
   create_table "answers", :force => true do |t|
     t.text     "content"
-    t.integer  "answerable_id"
-    t.string   "answerable_type"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.integer  "user_id"
+    t.integer  "question_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "comments", :force => true do |t|

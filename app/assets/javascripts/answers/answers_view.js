@@ -1,19 +1,25 @@
 function AnswersView() {
-  this.addAnswerSelector = ".new_answer";
+  this.addAnswerSelector = ".add_answer";
+  this.newAnswerFormSelector = ".new_answer_form"
   this.answerFeed = ".answer_feed"
+  this.newAnswerSubmission = "form#new_answer"
 }
 
 AnswersView.prototype = {
-  getAddAnswer: function() {
+  getAddAnswerForm: function() {
     return $(this.addAnswerSelector)
   },
   getAnswerFeed: function() {
     return this.answerFeed
   },
-  appendNewAnswerForm: function(a, b, c, d) {
-    console.log(a)
-    console.log(b)
-    console.log(c)
-    console.log(d)
+  toggleNewAnswerForm: function() {
+    var answerAddSelector = this.view.newAnswerFormSelector
+    $(answerAddSelector).toggleClass('hidden')
+  },
+  getNewAnswer: function() {
+    return $(this.newAnswerSubmission)
+  },
+  appendNewAnswer: function(event, data) {
+    console.log(data)
   }
 }

@@ -1,0 +1,6 @@
+<div class="new_answer_form hidden">
+  <%= form_for [@question, @answer] do |f| %>
+    <%= f.text_area :content, placeholder: "your answer to this burning question..." %>
+    <%= f.submit "Answer" %>
+  <% end %>
+</div>
