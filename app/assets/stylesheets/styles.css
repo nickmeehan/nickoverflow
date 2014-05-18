@@ -29,9 +29,11 @@ ul.answer_feed li {
   border-radius: 0.25em;
 }
 
-ul.answer_feed li p {
-  font-size: 0.9em;
+ul.answer_feed li p, p.question_info {
+  font-size: 0.8em;
 }
+
+
 
 a {
   text-decoration: none;

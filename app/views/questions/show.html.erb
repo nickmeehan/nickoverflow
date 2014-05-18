@@ -1,7 +1,7 @@
 <article class="question_holder">
   <h3><%= @question.title %></h3>
   <p><%= @question.body %></p>
-  <p class="question_info"></p>
+  <p class="question_info"><%= "by #{@question.user.username} on #{@question.created_at.strftime("%A %b %d %Y")} at #{@question.created_at.strftime("%I:%M %p")} " %></p>
   <% if @author_id == session[:user_id] %>
     <%= link_to "Edit", edit_question_path(@question) %>
     <%= link_to "Delete", question_path(@question), method: :delete %>
