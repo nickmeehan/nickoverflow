@@ -58,4 +58,11 @@ describe QuestionsController do
     end
   end
 
+  # context "#edit" do
+  #   let
+  #   it "is successful" do
+
+  #   end
+  # end
+
 end
