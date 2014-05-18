@@ -7,6 +7,8 @@ class AnswersController < ApplicationController
   end
 
   def new
+    @answer = Answer.new
+    render :partial => 'new', :locals => { answer: @answer }
   end
 
   def create

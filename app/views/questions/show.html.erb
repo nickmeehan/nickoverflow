@@ -1,9 +1,13 @@
 <h3><%= @question.title %></h3>
 <p><%= @question.body %></p>
 
+<div class=".answer_feed"></div>
+
 <% if @author_id == session[:user_id] %>
   <%= link_to "Edit", edit_question_path(@question) %>
   <%= link_to "Delete", question_path(@question), method: :delete %>
+<% else %>
+  <%= link_to "Add Answer", new_answer_path, { class: "new_answer", remote: true } %>
 <% end %>
 
 <p><%= link_to "Home", root_path %></p>
