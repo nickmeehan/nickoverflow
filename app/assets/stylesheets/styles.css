@@ -2,8 +2,17 @@ ul {
   list-style: none;
 }
 
-li {
+nav li {
   display: inline;
+}
+
+ul.answer_feed {
+  width: 500px;
+}
+
+ul.answer_feed li {
+  padding: 3em 5em;
+  background-color: green;
 }
 
 a {

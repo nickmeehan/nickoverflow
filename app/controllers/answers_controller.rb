@@ -13,12 +13,13 @@ class AnswersController < ApplicationController
   end
 
   def create
-    response = Answer.save_answer(params, session[:user_id])
-    if response == true
-      answer = Answer.last
-      :partial => 'shared/answer', :locals => { answer: answer }
+    @answer = User.find(session[:user_id]).answers.build(params[:answer])
+    if @answer.save
+      # redirect_to question_path(@answer.question)
+      render :partial => 'shared/answer', :locals => { answer: @answer }
     else
-      render :text => response, :status => 422
+      @errors = @answer.errors.full_messages.join(", ")
+      render :text => @errors, :status => 422
     end
   end
 
