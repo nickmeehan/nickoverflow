@@ -99,4 +99,14 @@ describe QuestionsController do
     end
   end
 
+  context "#destroy" do
+    let!(:question) { FactoryGirl.create :question }
+    it "destroys the question" do
+      params = { id: question.id }
+      expect {
+        delete :destroy, params
+      }.to change { Question.count }.by(-1)
+    end
+  end
+
 end
