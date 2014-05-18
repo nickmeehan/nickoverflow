@@ -1,5 +1,17 @@
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+article.question_holder {
+  width: 60%;
+  padding: 3em;
+  background-color: #E3CEA6;
+  border-radius: 0.25em;
+}
 ul {
   list-style: none;
+  margin-left: none;
 }
 
 nav li {
@@ -12,7 +24,13 @@ ul.answer_feed {
 
 ul.answer_feed li {
   padding: 3em 5em;
-  background-color: green;
+  background-color: #F2C777;
+  margin: 1em 0em;
+  border-radius: 0.25em;
+}
+
+ul.answer_feed li p {
+  font-size: 0.9em;
 }
 
 a {
@@ -32,4 +50,8 @@ input {
 
 .hidden {
   display: none;
+}
+
+p.new_answer_errors {
+  color: #40DB40;
 }

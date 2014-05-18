@@ -15,7 +15,6 @@ class AnswersController < ApplicationController
   def create
     @answer = User.find(session[:user_id]).answers.build(params[:answer])
     if @answer.save
-      # redirect_to question_path(@answer.question)
       render :partial => 'shared/answer', :locals => { answer: @answer }
     else
       @errors = @answer.errors.full_messages.join(", ")

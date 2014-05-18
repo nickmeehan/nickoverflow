@@ -1,5 +1,19 @@
-<h3><%= @question.title %></h3>
-<p><%= @question.body %></p>
+<article class="question_holder">
+  <h3><%= @question.title %></h3>
+  <p><%= @question.body %></p>
+  <p class="question_info"></p>
+  <% if @author_id == session[:user_id] %>
+    <%= link_to "Edit", edit_question_path(@question) %>
+    <%= link_to "Delete", question_path(@question), method: :delete %>
+  <% end %>
+</article>
+<h2>Answers</h2>
+
+<% if @author_id != session[:user_id] %>
+  <p class="new_answer_errors"></p>
+  <%= render 'shared/new_answer_form', :locals => { question: @question, answer: @answer } %>
+  <a class="add_answer">Add Answer</a>
+<% end %>
 
 <ul class="answer_feed">
   <% @answers.each do |answer| %>
@@ -7,11 +21,4 @@
   <% end %>
 </ul>
 
-<% if @author_id == session[:user_id] %>
-  <%= link_to "Edit", edit_question_path(@question) %>
-  <%= link_to "Delete", question_path(@question), method: :delete %>
-<% else %>
-  <%= render 'shared/new_answer_form', :locals => { question: @question, answer: @answer } %><br><br><br>
-  <a class="add_answer">Add Answer</a>
-<% end %>
 

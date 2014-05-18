@@ -13,5 +13,6 @@ AnswersController.prototype = {
     addAnswerFormSelector.on('click', this.view.toggleNewAnswerForm.bind(this))
     var addAnswerSelector = this.view.getNewAnswer()
     container.on('ajax:success', addAnswerSelector, this.view.appendNewAnswer.bind(this))
+    container.on('ajax:error', addAnswerSelector, this.view.appendNewAnswerErrors.bind(this))
   }
 }
