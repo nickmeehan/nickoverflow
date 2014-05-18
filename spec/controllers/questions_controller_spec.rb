@@ -89,6 +89,14 @@ describe QuestionsController do
       }.to change { question.reload.title }.to "YES"
       expect(response).to be_redirect
     end
+
+    it "does not update attributes if fields are blank" do
+      params = { id: question.id, question: { title: nil } }
+      expect {
+        put :update, params
+      }.to_not change { question.reload.title }
+      expect(response).to_not be_redirect
+    end
   end
 
 end
