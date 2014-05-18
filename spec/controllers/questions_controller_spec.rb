@@ -58,11 +58,37 @@ describe QuestionsController do
     end
   end
 
-  # context "#edit" do
-  #   let
-  #   it "is successful" do
+  context "#edit" do
+    let(:question) { FactoryGirl.create :question }
+    let(:author) { question.user }
+    it "is successful" do
+      params = { id: question.id }
+      get :edit, params
+      expect(response).to be_success
+    end
 
-  #   end
-  # end
+    it "assigns question to the correct question" do
+      params = { id: question.id }
+      get :edit, params
+      expect(assigns(:question)).to eq question
+    end
+
+    it "assigns author id to the correct id" do
+      params = { id: question.id }
+      get :edit, params
+      expect(assigns(:author_id)).to eq author.id
+    end
+  end
+
+  context "#update" do
+    let(:question) { FactoryGirl.create :question }
+    it "updates attributes correctly and redirects" do
+      params = { id: question.id, question: { title: "YES" } }
+      expect {
+        put :update, params
+      }.to change { question.reload.title }.to "YES"
+      expect(response).to be_redirect
+    end
+  end
 
 end
