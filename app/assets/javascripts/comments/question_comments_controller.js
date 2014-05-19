@@ -9,7 +9,7 @@ QuestionCommentsController.prototype = {
   },
   bindListeners: function() {
     var questionCommentSelector = this.view.getCommentSelector();
-    questionCommentSelector.on('ajax:success', this.view.appendNewComment.bind(this))
-    questionCommentSelector.on('ajax:error', this.view.appendNewCommentErrors.bind(this))
+    questionCommentSelector.on('ajax:success', this.view.appendNewComment.bind(this.view))
+    questionCommentSelector.on('ajax:error', this.view.appendNewCommentErrors.bind(this.view))
   }
 }
