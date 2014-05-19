@@ -22,6 +22,12 @@ describe QuestionsController do
       get :show, params
       expect(assigns(:author_id)).to eq author.id
     end
+
+    it "assigns answer to be a new Answer" do
+      params = { id: question.id }
+      get :show, params
+      expect(assigns(:answer)).to be_a_new Answer
+    end
   end
 
   context "#new" do
@@ -30,7 +36,7 @@ describe QuestionsController do
       expect(response).to be_success
     end
 
-    it "assigns questions to a new Question" do
+    it "assigns question to a new Question" do
       get :new
       expect(assigns(:question)).to be_a_new Question
     end
