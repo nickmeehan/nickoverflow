@@ -1,29 +1,25 @@
 function QuestionCommentsView() {
-  this.containerSelector = '.container';
-  this.questionCommentSelector = '.question_holder form#new_comment';
-  this.questionCommentsHolderSelector = '.question_comments_holder';
-  this.questionCommentsErrorsSelector = '.new_question_comment_errors'
+  this.commentSelector = '.question_holder form#new_comment';
+  this.commentsHolderSelector = '.question_comments_holder';
+  this.commentsErrorsSelector = '.new_question_comment_errors'
 }
 
 QuestionCommentsView.prototype = {
-  getContainer: function() {
-    return $(this.containerSelector);
+  getCommentSelector: function() {
+    return $(this.commentSelector);
   },
-  getQuestionCommentSelector: function() {
-    return $(this.questionCommentSelector);
+  getCommentsHolder: function() {
+    return $(this.commentsHolderSelector)
   },
-  getQuestionCommentsHolder: function() {
-    return $(this.questionCommentsHolderSelector)
+  appendNewComment: function(event, data) {
+    var commentsHolder = this.view.getCommentsHolder();
+    commentsHolder.append(data)
   },
-  appendNewQuestionComment: function(event, data) {
-    var questionCommentsHolder = this.view.getQuestionCommentsHolder();
-    questionCommentsHolder.append(data)
+  getNewCommentErrorsSelector: function() {
+    return $(this.commentsErrorsSelector)
   },
-  getNewQuestionCommentErrorsSelector: function() {
-    return $(this.questionCommentsErrorsSelector)
-  },
-  appendNewQuestionCommentErrors: function(event, data) {
+  appendNewCommentErrors: function(event, data) {
     console.log(event);
-    console.log(data);
+    console.log(data.responseText);
   }
 }

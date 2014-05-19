@@ -1,10 +1,9 @@
 function AnswersView() {
   this.addAnswerSelector = ".add_answer";
-  this.newAnswerFormSelector = ".new_answer_form"
-  this.answerFeed = ".answer_feed"
-  this.newAnswerSubmission = "form#new_answer"
-  this.containerSelector = '.container'
-  this.newAnswerErrorsSelector = '.new_answer_errors'
+  this.newAnswerFormSelector = ".new_answer_form";
+  this.answerFeed = ".answer_feed";
+  this.newAnswerSubmission = "form#new_answer";
+  this.newAnswerErrorsSelector = '.new_answer_errors';
 }
 
 AnswersView.prototype = {
@@ -13,9 +12,6 @@ AnswersView.prototype = {
   },
   getAnswerFeed: function() {
     return $(this.answerFeed)
-  },
-  getContainer: function() {
-    return $(this.containerSelector)
   },
   getNewAnswerErrorsContainer: function() {
     return $(this.newAnswerErrorsSelector)
@@ -32,6 +28,7 @@ AnswersView.prototype = {
     $(answerAddSelector).toggleClass('hidden')
     var errorsContainer = this.view.getNewAnswerErrorsContainer()
     errorsContainer.empty()
+    console.log("I'm here")
     var answerFeed = this.view.getAnswerFeed()
     answerFeed.append(data)
   },
