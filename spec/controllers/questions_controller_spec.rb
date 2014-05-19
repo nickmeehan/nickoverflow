@@ -126,6 +126,12 @@ describe QuestionsController do
         delete :destroy, params
       }.to change { Question.count }.by(-1)
     end
+
+    it "destroys all associated answers of the question" do
+      params = { id: question.id }
+      delete :destroy, params
+      expect(question.answers.count).to eq 0
+    end
   end
 
 end
