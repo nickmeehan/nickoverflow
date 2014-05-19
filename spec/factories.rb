@@ -10,4 +10,10 @@ FactoryGirl.define do
     title { Faker::Lorem.word }
     body { Faker::Lorem.sentence }
   end
+
+  factory :answer do
+    association :user
+    association :question
+    content { Faker::Lorem.sentence }
+  end
 end

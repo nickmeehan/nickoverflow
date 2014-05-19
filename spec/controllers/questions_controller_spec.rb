@@ -5,6 +5,7 @@ describe QuestionsController do
   context "#show" do
     let(:question) { FactoryGirl.create :question }
     let(:author) { question.user }
+    let(:answers) { question.answers }
     it "is successful" do
       params = { id: question.id }
       get :show, params
@@ -33,6 +34,12 @@ describe QuestionsController do
       params = { id: question.id }
       get :show, params
       expect(assigns(:comment)).to be_a_new Comment
+    end
+
+    it "assigns answers to the correct question" do
+      params = { id: question.id }
+      get :show, params
+      expect(assigns(:answers)).to eq answers
     end
   end
 
