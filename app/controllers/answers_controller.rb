@@ -13,7 +13,8 @@ class AnswersController < ApplicationController
   end
 
   def create
-    @answer = User.find(session[:user_id]).answers.build(params[:answer])
+    user = User.find(session[:user_id])
+    @answer = user.answers.build(params[:answer])
     if @answer.save
       render :partial => 'shared/answer', :locals => { answer: @answer }
     else

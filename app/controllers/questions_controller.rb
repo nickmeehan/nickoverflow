@@ -6,9 +6,8 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @author_id = @question.user.id
     @answer = Answer.new
-    p @question
-    p @question.answers
     @answers = @question.answers
+    @comment = Comment.new
   end
 
   def new
