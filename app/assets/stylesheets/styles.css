@@ -11,15 +11,16 @@ article.question_holder {
 }
 ul {
   list-style: none;
-  margin-left: none;
+  margin-left: 0em;
 }
+
 
 nav li {
   display: inline;
 }
 
 ul.answer_feed {
-  width: 500px;
+  width: 60%;
 }
 
 ul.answer_feed li {
