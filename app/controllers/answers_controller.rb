@@ -13,11 +13,9 @@ class AnswersController < ApplicationController
   end
 
   def create
-    p params
     user = User.find(session[:user_id])
     @answer = user.answers.build(params[:answer])
     if @answer.save
-      p "we have been saved!"
       @comment = Comment.new
       render :partial => 'shared/answer', :locals => { answer: @answer, comment: @comment }
     else

@@ -5,22 +5,24 @@ CommentsView.prototype = {
   getCommentSelector: function() {
     return $(this.commentSelector);
   },
-  getCommentsHolder: function() {
-    return $(this.commentsHolderSelector)
+  getCommentsHolder: function(targetId) {
+    return $(this.openingDataKeySelector + targetId + this.closingDataKeySelector + this.commentsHolderSelector)
   },
-  getCommentTextArea: function() {
-    return $(this.commentSelector + ' ' + this.commentTextArea)
+  getCommentTextArea: function(targetId) {
+    return $(this.commentSelector + this.openingDataKeySelector + targetId + this.closingDataKeySelector + ' ' + this.commentTextArea)
   },
   getCommentDeletionSelector: function() {
     return $(this.containerSelector + ' ' + this.commentsHolderSelector + ' ' + this.linkSelector)
   },
   appendNewComment: function(event, data) {
+    console.log(data)
     var errorsContainer = this.getNewCommentErrorsSelector();
     errorsContainer.empty();
-    var commentTextArea = this.getCommentTextArea();
+    var commentTextArea = this.getCommentTextArea(data["target_id"]);
     commentTextArea.val('');
-    var commentsHolder = this.getCommentsHolder();
-    commentsHolder.append(data)
+    var commentsHolder = this.getCommentsHolder(data["target_id"]);
+    console.log(commentsHolder)
+    commentsHolder.append(data["template"])
   },
   getNewCommentErrorsSelector: function() {
     return $(this.commentsErrorsSelector)
