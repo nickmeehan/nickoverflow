@@ -27,6 +27,13 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @comment = Comment.find(params[:id])
+    if @comment.destroy
+      render :json => { id: @comment.id, message: "No one will see your comment again!" }
+    else
+      @errors = @comment.errors.full_messages.join(", ")
+      render :text => @errors, :status => 422
+    end
   end
 
 end

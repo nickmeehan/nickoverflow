@@ -1,1 +1,6 @@
-<li><%= "#{comment.content} -- #{comment.user.username} #{comment.created_at.strftime("%A %b %d %Y")} at #{comment.created_at.strftime("%I:%M %p")}" %></li>
+<li id="comment<%= comment.id %>">
+  <%= "#{comment.content} -- #{comment.user.username} #{comment.created_at.strftime("%A %b %d %Y")} at #{comment.created_at.strftime("%I:%M %p")}" %>
+  <% if comment.user.id == session[:user_id] %>
+     || <%= link_to "delete", comment_path(comment), method: :delete, remote: true %>
+  <% end %>
+</li>
