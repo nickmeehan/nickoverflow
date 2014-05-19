@@ -28,6 +28,12 @@ describe QuestionsController do
       get :show, params
       expect(assigns(:answer)).to be_a_new Answer
     end
+
+    it "assigns comment to be a new Comment" do
+      params = { id: question.id }
+      get :show, params
+      expect(assigns(:comment)).to be_a_new Comment
+    end
   end
 
   context "#new" do
