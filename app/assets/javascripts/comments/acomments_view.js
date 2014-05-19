@@ -15,20 +15,19 @@ CommentsView.prototype = {
     return $(this.containerSelector + ' ' + this.commentsHolderSelector + ' ' + this.linkSelector)
   },
   appendNewComment: function(event, data) {
-    console.log(data)
-    var errorsContainer = this.getNewCommentErrorsSelector();
+    var errorsContainer = this.getNewCommentErrorsSelector(data["target_id"]);
     errorsContainer.empty();
     var commentTextArea = this.getCommentTextArea(data["target_id"]);
     commentTextArea.val('');
     var commentsHolder = this.getCommentsHolder(data["target_id"]);
     commentsHolder.append(data["template"])
   },
-  getNewCommentErrorsSelector: function() {
-    return $(this.commentsErrorsSelector)
+  getNewCommentErrorsSelector: function(targetId) {
+    return $(this.openingDataKeySelector + targetId + this.closingDataKeySelector + this.commentsErrorsSelector)
   },
   appendNewCommentErrors: function(event, data) {
-    var errorsContainer = this.getNewCommentErrorsSelector();
-    errorsContainer.text(data.responseText);
+    var errorsContainer = this.getNewCommentErrorsSelector(data.responseJSON["target_id"]);
+    errorsContainer.text(data.responseJSON["errors"]);
   },
   removeComment: function(event, data) {
     $(this.commentIdSelector + data["id"]).remove();

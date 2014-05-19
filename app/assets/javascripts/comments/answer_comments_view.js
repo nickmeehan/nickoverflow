@@ -7,7 +7,7 @@ function AnswerCommentsView() {
   this.commentIdSelector = '#comment';
   this.linkSelector = 'a';
   this.commentsHolderSelector = '.answer_comments_holder';
-  this.commentsErrorSelector = '.new_answer_comment_errors';
+  this.commentsErrorsSelector = '.new_answer_comment_errors';
 }
 
 AnswerCommentsView.prototype = CommentsView.prototype;

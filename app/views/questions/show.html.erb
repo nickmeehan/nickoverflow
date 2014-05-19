@@ -12,7 +12,7 @@
       <%= render 'shared/comment_snippet', { comment: comment } %>
     <% end %>
   </ul>
-  <p class="new_question_comment_errors"></p>
+  <p class="new_question_comment_errors" data-question="<%= @question.id %>"></p>
   <%= form_for @comment, html: { remote: true, data: { question: @question.id } } do |f| %>
     <%= f.hidden_field :commentable_type, :value => "Question" %>
     <%= f.hidden_field :commentable_id, :value => @question.id %>

@@ -13,11 +13,10 @@ class CommentsController < ApplicationController
     user = User.find(session[:user_id])
     @comment = user.comments.build(params[:comment])
     if @comment.save
-      p "saved?"
       render :json => { :template => render_to_string(:partial => 'shared/comment_snippet', :locals => { comment: @comment }), target_id: @comment.commentable_id }
     else
       @errors = @comment.errors.full_messages.join(", ")
-      render :text => @errors, :status => 422
+      render :json => { errors: @errors, target_id: @comment.commentable_id }, :status => 422
     end
   end
 
