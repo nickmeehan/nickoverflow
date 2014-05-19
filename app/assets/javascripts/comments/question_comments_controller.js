@@ -14,5 +14,6 @@ QuestionCommentsController.prototype = {
     var commentDeletionSelector = this.view.getCommentDeletionSelector();
     console.log(commentDeletionSelector);
     commentDeletionSelector.on('ajax:success', this.view.removeComment.bind(this.view))
+    commentDeletionSelector.on('ajax:error', this.view.displayCommentErrors.bind(this.view))
   }
 }

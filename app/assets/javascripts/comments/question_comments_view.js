@@ -39,5 +39,8 @@ QuestionCommentsView.prototype = {
   removeComment: function(event, data) {
     $(this.commentIdSelector + data["id"]).remove();
     alert(data["message"]);
+  },
+  displayCommentErrors: function(event, data) {
+    alert(data.responseText)
   }
 }
