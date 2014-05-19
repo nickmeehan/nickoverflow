@@ -1,4 +1,17 @@
 <li>
   <h4><%= answer.content %></h4>
   <p><%= "by #{answer.user.username} on #{answer.created_at.strftime("%A %b %d %Y")} at #{answer.created_at.strftime("%I:%M %p")}" %></p>
+  <ul class="answer_comments_holder" data-answer="<%= answer.id %>">
+    <% answer.comments.each do |comment| %>
+      <%= render 'shared/comment_snippet', { comment: comment } %>
+    <% end %>
+  </ul>
+  <p class="new_answer_comment_errors" data-answer="<%= answer.id %>"></p>
+  <%= form_for @comment, html: { remote: true, data: { answer: answer.id } } do |f| %>
+    <%= f.hidden_field :commentable_type, :value => "Answer" %>
+    <%= f.hidden_field :commentable_id, :value => answer.id %>
+    <%= f.text_area :content, cols: "40", rows: "3", placeholder: "pump up the comments!" %>
+    <%= f.submit "Comment" %>
+  <% end %>
+
 </li>

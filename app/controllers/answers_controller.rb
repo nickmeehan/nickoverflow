@@ -16,7 +16,8 @@ class AnswersController < ApplicationController
     user = User.find(session[:user_id])
     @answer = user.answers.build(params[:answer])
     if @answer.save
-      render :partial => 'shared/answer', :locals => { answer: @answer }
+      @comment = Comment.new
+      render :partial => 'shared/answer', :locals => { answer: @answer, comment: @comment }
     else
       @errors = @answer.errors.full_messages.join(", ")
       render :text => @errors, :status => 422

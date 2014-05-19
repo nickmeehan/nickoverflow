@@ -3,7 +3,7 @@
   margin: 0 auto;
 }
 
-article.question_holder {
+section.question_holder {
   width: 60%;
   padding: 3em;
   background-color: #E3CEA6;
@@ -11,15 +11,16 @@ article.question_holder {
 }
 ul {
   list-style: none;
-  margin-left: none;
+  margin-left: 0em;
 }
+
 
 nav li {
   display: inline;
 }
 
 ul.answer_feed {
-  width: 500px;
+  width: 60%;
 }
 
 ul.answer_feed li {

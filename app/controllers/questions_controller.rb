@@ -32,7 +32,7 @@ class QuestionsController < ApplicationController
   def update
     @question = Question.find(params[:id])
     if @question.update_attributes(params[:question])
-      redirect_to root_path
+      redirect_to question_path(@question)
     else
       render :edit
     end
