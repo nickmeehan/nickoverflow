@@ -7,7 +7,7 @@
     <% end %>
   </ul>
   <p class="new_answer_comment_errors"></p>
-  <%= form_for @comment, remote: true do |f| %>
+  <%= form_for @comment, html: { remote: true, data: { answer: answer.id } } do |f| %>
     <%= f.hidden_field :commentable_type, :value => "Answer" %>
     <%= f.hidden_field :commentable_id, :value => answer.id %>
     <%= f.text_area :content, cols: "40", rows: "3", placeholder: "pump up the comments!" %>

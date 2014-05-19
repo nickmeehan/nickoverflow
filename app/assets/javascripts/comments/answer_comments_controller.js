@@ -3,7 +3,7 @@ function AnswerCommentsController(view) {
 }
 
 AnswerCommentsController.prototype = {
-  init.function() {
+  init: function() {
     this.bindListeners();
     console.log("answer comments also bound!")
   },

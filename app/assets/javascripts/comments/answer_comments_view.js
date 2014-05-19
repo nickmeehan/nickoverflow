@@ -1,6 +1,6 @@
 function AnswerCommentsView() {
   this.containerSelector = '.container'
-  this.commentSelector = ''
+  this.commentSelector = '.answer_hold form#new_comment'
 }
 
-AnswerCommentsView.prototype = CommentsView.prototype;
+// AnswerCommentsView.prototype = CommentsView.prototype;

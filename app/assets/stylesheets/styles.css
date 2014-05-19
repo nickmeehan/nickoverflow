@@ -3,7 +3,7 @@
   margin: 0 auto;
 }
 
-article.question_holder {
+section.question_holder {
   width: 60%;
   padding: 3em;
   background-color: #E3CEA6;

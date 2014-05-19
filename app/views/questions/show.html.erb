@@ -1,4 +1,4 @@
-<article class="question_holder">
+<section class="question_holder">
   <h3><%= @question.title %></h3>
   <p><%= @question.body %></p>
   <p class="question_info"><%= "by #{@question.user.username} on #{@question.created_at.strftime("%A %b %d %Y")} at #{@question.created_at.strftime("%I:%M %p")} " %></p>
@@ -13,26 +13,26 @@
     <% end %>
   </ul>
   <p class="new_question_comment_errors"></p>
-  <%= form_for @comment, remote: true do |f| %>
+  <%= form_for @comment, html: { remote: true, data: { question: @question.id } } do |f| %>
     <%= f.hidden_field :commentable_type, :value => "Question" %>
     <%= f.hidden_field :commentable_id, :value => @question.id %>
     <%= f.text_area :content, cols: "40", rows: "3", placeholder: "pump up the comments!" %>
     <%= f.submit "Comment" %>
   <% end %>
-</article>
+</section>
 
 <h2>Answers</h2>
 
-<% if @author_id != session[:user_id] %>
-  <p class="new_answer_errors"></p>
-  <%= render 'shared/new_answer_form', :locals => { question: @question, answer: @answer } %>
-  <a class="add_answer">Add Answer</a>
-<% end %>
-
-<ul class="answer_feed">
-  <% @answers.each do |answer| %>
-    <%= render 'shared/answer', { answer: answer } %>
+<section class="answer_holder">
+  <% if @author_id != session[:user_id] %>
+    <p class="new_answer_errors"></p>
+    <%= render 'shared/new_answer_form', :locals => { question: @question, answer: @answer } %>
+    <a class="add_answer">Add Answer</a>
   <% end %>
-</ul>
 
-
+  <ul class="answer_feed">
+    <% @answers.each do |answer| %>
+      <%= render 'shared/answer', { answer: answer } %>
+    <% end %>
+  </ul>
+</section>
