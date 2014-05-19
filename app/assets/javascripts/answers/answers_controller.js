@@ -5,7 +5,6 @@ function AnswersController(view) {
 AnswersController.prototype = {
   init: function() {
     this.bindListeners();
-    console.log("we're bound!")
   },
   bindListeners: function() {
     var addAnswerFormSelector = this.view.getAddAnswerForm()

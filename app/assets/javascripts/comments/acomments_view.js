@@ -21,7 +21,6 @@ CommentsView.prototype = {
     var commentTextArea = this.getCommentTextArea(data["target_id"]);
     commentTextArea.val('');
     var commentsHolder = this.getCommentsHolder(data["target_id"]);
-    console.log(commentsHolder)
     commentsHolder.append(data["template"])
   },
   getNewCommentErrorsSelector: function() {
