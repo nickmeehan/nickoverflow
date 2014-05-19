@@ -6,9 +6,8 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @author_id = @question.user.id
     @answer = Answer.new
-    p @question
-    p @question.answers
     @answers = @question.answers
+    @comment = Comment.new
   end
 
   def new
@@ -40,7 +39,9 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    Question.find(params[:id]).destroy
+    @question = Question.find(params[:id])
+    @question.answers.destroy_all
+    @question.destroy
     redirect_to root_path
   end
 end

@@ -8,9 +8,11 @@ AnswersController.prototype = {
     console.log("we're bound!")
   },
   bindListeners: function() {
+    var container = this.view.getContainer()
     var addAnswerFormSelector = this.view.getAddAnswerForm()
     addAnswerFormSelector.on('click', this.view.toggleNewAnswerForm.bind(this))
     var addAnswerSelector = this.view.getNewAnswer()
-     .on('ajax:success', this.view.appendNewAnswer.bind(this))
+    container.on('ajax:success', addAnswerSelector, this.view.appendNewAnswer.bind(this))
+    container.on('ajax:error', addAnswerSelector, this.view.appendNewAnswerErrors.bind(this))
   }
 }

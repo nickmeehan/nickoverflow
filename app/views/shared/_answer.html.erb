@@ -1,4 +1,4 @@
 <li>
-  <%= answer.content %>
-  <%= answer.user.username %>
+  <h4><%= answer.content %></h4>
+  <p><%= "by #{answer.user.username} on #{answer.created_at.strftime("%A %b %d %Y")} at #{answer.created_at.strftime("%I:%M %p")}" %></p>
 </li>

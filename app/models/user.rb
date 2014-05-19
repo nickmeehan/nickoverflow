@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   has_secure_password
 
   has_many :questions
-  has_many :comments, as: :commentable
+  has_many :comments
   has_many :answers
 
   validates_presence_of :email, :username, :password

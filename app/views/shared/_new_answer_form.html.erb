@@ -1,6 +1,7 @@
 <div class="new_answer_form hidden">
-  <%= form_for [@question, @answer] do |f| %>
-    <%= f.text_area :content, placeholder: "your answer to this burning question..." %>
+  <%= form_for [@question, @answer], remote: true do |f| %>
+    <%= f.hidden_field :question_id, :value => @question.id %>
+    <%= f.text_area :content, :cols => "22", :rows => "7", placeholder: "your answer to this burning question..." %>
     <%= f.submit "Answer" %>
   <% end %>
 </div>
