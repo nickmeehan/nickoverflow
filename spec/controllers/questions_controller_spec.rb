@@ -5,6 +5,7 @@ describe QuestionsController do
   context "#show" do
     let(:question) { FactoryGirl.create :question }
     let(:author) { question.user }
+    let(:answers) { question.answers }
     it "is successful" do
       params = { id: question.id }
       get :show, params
@@ -22,6 +23,24 @@ describe QuestionsController do
       get :show, params
       expect(assigns(:author_id)).to eq author.id
     end
+
+    it "assigns answer to be a new Answer" do
+      params = { id: question.id }
+      get :show, params
+      expect(assigns(:answer)).to be_a_new Answer
+    end
+
+    it "assigns comment to be a new Comment" do
+      params = { id: question.id }
+      get :show, params
+      expect(assigns(:comment)).to be_a_new Comment
+    end
+
+    it "assigns answers to the correct question" do
+      params = { id: question.id }
+      get :show, params
+      expect(assigns(:answers)).to eq answers
+    end
   end
 
   context "#new" do
@@ -30,7 +49,7 @@ describe QuestionsController do
       expect(response).to be_success
     end
 
-    it "assigns questions to a new Question" do
+    it "assigns question to a new Question" do
       get :new
       expect(assigns(:question)).to be_a_new Question
     end
@@ -106,6 +125,12 @@ describe QuestionsController do
       expect {
         delete :destroy, params
       }.to change { Question.count }.by(-1)
+    end
+
+    it "destroys all associated answers of the question" do
+      params = { id: question.id }
+      delete :destroy, params
+      expect(question.answers.count).to eq 0
     end
   end
 
