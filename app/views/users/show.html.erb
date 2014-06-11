@@ -1,1 +1,7 @@
-show.html.erb
+<h2><%= @user.username %></h2>
+
+<ul>
+  <% @questions.each do |question| %>
+    <%= render 'shared/question_snippet', question: question %>
+  <% end %>
+</ul>
