@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(session[:user_id])
-    @questions = @user.questions
+    @questions = @user.questions.order("created_at DESC")
   end
 
   def new
