@@ -10,9 +10,10 @@ class VotesController < ApplicationController
 	end
 
 	def create
-
+		new_vote = Vote.verify_as_new(params[:vote])
 		user = User.find(session[:user_id])
 		@vote = user.votes.build(params[:vote])
+		p new_vote
 		p params
 		p @vote
 	end

@@ -3,4 +3,11 @@ class Vote < ActiveRecord::Base
 	
 	belongs_to :user
 	belongs_to :votable, polymorphic: true
+
+	def self.verify_as_new(vote_params)
+		if vote_params["votable_type"] == "Answer"
+			answer = Answer.find(vote_params["votable_id"])
+		end
+	end
+
 end
