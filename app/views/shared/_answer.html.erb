@@ -11,7 +11,7 @@
       <%= f.submit "Upvote" %>
     <% end %>
 
-    <%= answer.votes.count %>
+    <div class="vote_count"><%= answer.votes.count %></div>
   
     <%= form_for @vote, html: { remote: true, data: { answer: answer.id } } do |f| %>
       <%= f.hidden_field :votable_type, :value => "Answer" %>
