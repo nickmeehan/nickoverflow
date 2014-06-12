@@ -4,6 +4,19 @@ class Vote < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :votable, polymorphic: true
 
+	after_save do
+		if self.votable_type == "Answer"
+			answer = Answer.find(self.votable_id)
+			if self.upvoted
+				answer.vote_count += 1
+				answer.save
+			else
+				answer.vote_count -= 1
+				answer.save
+			end	
+		end
+	end
+
 	def self.verify_as_new(vote_params, voter_id)
 		if vote_params["votable_type"] == "Answer"
 			answer = Answer.find(vote_params["votable_id"])
