@@ -8,6 +8,7 @@ class QuestionsController < ApplicationController
     @answer = Answer.new
     @answers = @question.answers
     @comment = Comment.new
+    @vote = Vote.new
   end
 
   def new
