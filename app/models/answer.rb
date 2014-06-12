@@ -1,5 +1,5 @@
 class Answer < ActiveRecord::Base
-  attr_accessible :content, :question_id
+  attr_accessible :content, :question_id, :vote_count
   
   validates :content, presence: true
   
