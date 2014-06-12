@@ -6,39 +6,33 @@ describe QuestionsController do
     let(:question) { FactoryGirl.create :question }
     let(:author) { question.user }
     let(:answers) { question.answers }
-    it "is successful" do
+
+    before(:each) do
       params = { id: question.id }
       get :show, params
+    end
+    
+    it "is successful" do
       expect(response).to be_success
     end
 
     it "assigns question to the correct Question" do
-      params = { id: question.id }
-      get :show, params
       expect(assigns(:question)).to eq question
     end
 
     it "assigns correct id to author" do
-      params = { id: question.id }
-      get :show, params
       expect(assigns(:author_id)).to eq author.id
     end
 
     it "assigns answer to be a new Answer" do
-      params = { id: question.id }
-      get :show, params
       expect(assigns(:answer)).to be_a_new Answer
     end
 
     it "assigns comment to be a new Comment" do
-      params = { id: question.id }
-      get :show, params
       expect(assigns(:comment)).to be_a_new Comment
     end
 
     it "assigns answers to the correct question" do
-      params = { id: question.id }
-      get :show, params
       expect(assigns(:answers)).to eq answers
     end
   end
@@ -80,21 +74,21 @@ describe QuestionsController do
   context "#edit" do
     let(:question) { FactoryGirl.create :question }
     let(:author) { question.user }
-    it "is successful" do
+
+    before(:each) do
       params = { id: question.id }
       get :edit, params
+    end
+
+    it "is successful" do
       expect(response).to be_success
     end
 
     it "assigns question to the correct question" do
-      params = { id: question.id }
-      get :edit, params
       expect(assigns(:question)).to eq question
     end
 
     it "assigns author id to the correct id" do
-      params = { id: question.id }
-      get :edit, params
       expect(assigns(:author_id)).to eq author.id
     end
   end
