@@ -18,7 +18,7 @@ AnswerVotesView.prototype = {
 	},
 	updateVoteCount: function(event, data) {
 		console.log(data)
-		var $voteCountHolder = this.getVoteCountHolder(data.voted_on.id)
-		$voteCountHolder.html(data.voted_on.vote_count)
+		var $voteCountHolder = this.getVoteCountHolder(data.voted_on_id)
+		$voteCountHolder.html(data.vote_count)
 	}
 }
