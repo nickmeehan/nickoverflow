@@ -12,7 +12,7 @@ CommentsView.prototype = {
     return $(this.commentSelector + this.openingDataKeySelector + targetId + this.closingDataKeySelector + ' ' + this.commentTextArea)
   },
   getCommentDeletionSelector: function() {
-    return $(this.containerSelector + ' ' + this.commentsHolderSelector + ' ' + this.linkSelector)
+    return this.commentsHolderSelector + ' ' + this.linkSelector
   },
   appendNewComment: function(event, data) {
     var errorsContainer = this.getNewCommentErrorsSelector(data["target_id"]);
