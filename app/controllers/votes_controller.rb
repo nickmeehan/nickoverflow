@@ -15,7 +15,6 @@ class VotesController < ApplicationController
 		@vote = user.votes.build(params[:vote])
 		if new_vote && @vote.save
 			voted_on = Vote.determine_newly_voted_object(@vote)
-			p voted_on
 			render json: { voted_on: voted_on, type: @vote.votable_type.downcase }
 		else
 			update
