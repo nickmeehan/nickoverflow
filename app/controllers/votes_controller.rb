@@ -14,8 +14,9 @@ class VotesController < ApplicationController
 		user = User.find(session[:user_id])
 		@vote = user.votes.build(params[:vote])
 		if new_vote && @vote.save
-			answer = Answer.find(@vote.votable_id)
-			render json: { answer: answer }
+			voted_on = Vote.determine_newly_voted_object(@vote)
+			p voted_on
+			render json: { voted_on: voted_on, type: @vote.votable_type.downcase }
 		else
 			update
 		end
@@ -27,12 +28,11 @@ class VotesController < ApplicationController
 	def update
 		@vote = Vote.find_vote(params[:vote], session[:user_id])
 		if @vote.update_attributes(params[:vote])
-			answer = Answer.find(@vote.votable_id)
-			render json: { answer: answer }
+			voted_on = Vote.determine_updated_vote_object(@vote)
+			render json: { voted_on: voted_on, type: @vote.votable_type.downcase }
 		else
-			p "WHAAATTTTT UPPP!!!"
-			p params
-			p @vote
+			errors = @vote.errors.full_message
+			render json: { errors: errors }
 		end
 	end
 
