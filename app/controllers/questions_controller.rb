@@ -6,7 +6,7 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @author_id = @question.user.id
     @answer = Answer.new
-    @answers = @question.answers
+    @answers = @question.answers.order("created_at ASC")
     @comment = Comment.new
     @vote = Vote.new
   end
