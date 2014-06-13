@@ -7,26 +7,33 @@
     <%= link_to "Edit", edit_question_path(@question) %>
     <%= link_to "Delete", question_path(@question), method: :delete %>
   <% end %><br>
+
   <ul class="question_comments_holder" data-question="<%= @question.id %>">
     <% @question.comments.each do |comment| %>
       <%= render 'shared/comment_snippet', { comment: comment } %>
     <% end %>
   </ul>
+
   <p class="new_question_comment_errors" data-question="<%= @question.id %>"></p>
+
   <%= form_for @comment, html: { remote: true, data: { question: @question.id } } do |f| %>
     <%= f.hidden_field :commentable_type, :value => "Question" %>
     <%= f.hidden_field :commentable_id, :value => @question.id %>
     <%= f.text_area :content, cols: "40", rows: "3", placeholder: "pump up the comments!" %>
     <%= f.submit "Comment" %>
   <% end %>
+
 </section>
 
 <h2>Answers</h2>
 
 <section class="answer_holder">
+
   <% if @author_id != session[:user_id] %>
     <p class="new_answer_errors"></p>
+
     <%= render 'shared/new_answer_form', :locals => { question: @question, answer: @answer } %>
+    
     <a class="add_answer">Add Answer</a>
   <% end %>
 
@@ -35,4 +42,5 @@
       <%= render 'shared/answer', { answer: answer } %>
     <% end %>
   </ul>
+
 </section>

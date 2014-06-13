@@ -7,5 +7,6 @@ Nickoverflow::Application.routes.draw do
     resources :answers
   end
   resources :comments
+  resources :votes
   resources :answers
 end

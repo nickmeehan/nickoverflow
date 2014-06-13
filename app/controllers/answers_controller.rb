@@ -17,6 +17,7 @@ class AnswersController < ApplicationController
     @answer = user.answers.build(params[:answer])
     if @answer.save
       @comment = Comment.new
+      @vote = Vote.new
       render :partial => 'shared/answer', :locals => { answer: @answer, comment: @comment }
     else
       @errors = @answer.errors.full_messages.join(", ")
