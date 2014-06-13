@@ -7,7 +7,6 @@ class AnswersController < ApplicationController
   end
 
   def new
-    p params
     @answer = Answer.new
     render :partial => 'new', :locals => { answer: @answer }
   end
