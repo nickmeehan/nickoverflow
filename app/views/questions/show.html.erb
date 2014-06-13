@@ -14,13 +14,15 @@
     <% end %>
   </ul>
 
-  <p class="new_question_comment_errors" data-question="<%= @question.id %>"></p>
 
-  <%= form_for @comment, html: { remote: true, data: { question: @question.id } } do |f| %>
-    <%= f.hidden_field :commentable_type, :value => "Question" %>
-    <%= f.hidden_field :commentable_id, :value => @question.id %>
-    <%= f.text_area :content, cols: "40", rows: "3", placeholder: "pump up the comments!" %>
-    <%= f.submit "Comment" %>
+  <% if session[:user_id] %>
+    <p class="new_question_comment_errors" data-question="<%= @question.id %>"></p>
+    <%= form_for @comment, html: { remote: true, data: { question: @question.id } } do |f| %>
+      <%= f.hidden_field :commentable_type, :value => "Question" %>
+      <%= f.hidden_field :commentable_id, :value => @question.id %>
+      <%= f.text_area :content, cols: "40", rows: "3", placeholder: "pump up the comments!" %>
+      <%= f.submit "Comment" %>
+    <% end %>
   <% end %>
 
 </section>
@@ -29,12 +31,13 @@
 
 <section class="answer_holder">
 
-  <% if @author_id != session[:user_id] %>
+  <% if session[:user_id] && @author_id != session[:user_id] %>
     <p class="new_answer_errors"></p>
 
     <%= render 'shared/new_answer_form', :locals => { question: @question, answer: @answer } %>
     
     <a class="add_answer">Add Answer</a>
+
   <% end %>
 
   <ul class="answer_feed">
