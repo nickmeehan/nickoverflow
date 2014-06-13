@@ -1,29 +1,9 @@
 class Vote < ActiveRecord::Base
-	attr_accessible :upvoted, :downvoted, :votable_type, :votable_id
+	attr_accessible :upvoted, :downvoted, :votable_type, :votable_id, :user_id
 	
 	belongs_to :user
 	belongs_to :votable, polymorphic: true
-
-	after_save do
-		if self.votable_type == "Answer"
-			answer = Answer.find(self.votable_id)
-			if self.upvoted
-				answer.vote_count += 1
-				answer.save
-			else
-				answer.vote_count -= 1
-				answer.save
-			end	
-		end
-	end
-
-	def self.verify_as_new(vote_params, voter_id)
-		if vote_params["votable_type"] == "Answer"
-			answer = Answer.find(vote_params["votable_id"])
-			existing_user = answer.votes.find_by_user_id(voter_id)
-			existing_user == nil ? true : false
-		end
-	end
+	validates :user_id, uniqueness: { scope: [:votable_id, :votable_type] }
 
 	def self.find_vote(vote_params, voter_id)
 		if vote_params["votable_type"] == "Answer"
