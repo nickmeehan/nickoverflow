@@ -5,12 +5,8 @@ class Vote < ActiveRecord::Base
 	belongs_to :votable, polymorphic: true
 	validates :user_id, uniqueness: { scope: [:votable_id, :votable_type] }
 
-	def self.find_vote(vote_params, voter_id)
-		if vote_params["votable_type"] == "Answer"
-			answer = Answer.find(vote_params["votable_id"])
-			vote = answer.votes.find_by_user_id(voter_id)
-			return vote
-		end
+	def self.find_vote(vote_params)
+		return self.find_by_votable_type_and_votable_id_and_user_id(vote_params["votable_type"], vote_params["votable_id"], vote_params["user_id"])
 	end
 
 end

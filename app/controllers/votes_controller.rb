@@ -22,7 +22,7 @@ class VotesController < ApplicationController
 	end
 
 	def update
-		@vote = Vote.find_vote(params[:vote], session[:user_id])
+		@vote = Vote.find_vote(params[:vote])
 		if @vote.update_attributes(params[:vote])
 			render json: { voted_on_id: @vote.votable_id, vote_count: @vote.votable.vote_counts }
 		else
