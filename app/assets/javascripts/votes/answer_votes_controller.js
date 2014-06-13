@@ -7,7 +7,8 @@ AnswerVotesController.prototype = {
 		this.bindListeners();
 	},
 	bindListeners: function() {
-		$('.votes').on('ajax:success', this.show)
+		var $answerVotesSelector = this.view.getVoteSelector();
+		$answerVotesSelector.on('ajax:success', this.view.updateVoteCount.bind(this.view))
 	},
 	show: function(a, b, c) {
 		console.log(a)
