@@ -1,33 +1,37 @@
 <section class="question_holder">
-  <h3><%= @question.title %></h3>
-  <p><%= @question.body %></p>
-  <p class="question_info"><%= "by #{@question.user.username} on #{@question.created_at.strftime("%A %b %d %Y")} at #{@question.created_at.strftime("%I:%M %p")} " %></p>
+  <article>
+    <h3><%= @question.title %></h3>
+    <p><%= @question.body %></p>
+    <p class="question_info"><%= "by #{@question.user.username} on #{@question.created_at.strftime("%A %b %d %Y")} at #{@question.created_at.strftime("%I:%M %p")} " %></p>
 
-  <% if @author_id == session[:user_id] %>
-    <%= link_to "Edit", edit_question_path(@question) %>
-    <%= link_to "Delete", question_path(@question), method: :delete %>
-  <% end %><br>
+    <% if @author_id == session[:user_id] %>
+      <%= link_to "Edit", edit_question_path(@question) %>
+      <%= link_to "Delete", question_path(@question), method: :delete %>
+    <% end %><br>
 
-  <ul class="question_comments_holder" data-question="<%= @question.id %>">
-    <% @question.comments.each do |comment| %>
-      <%= render 'shared/comment_snippet', { comment: comment } %>
+    <ul class="question_comments_holder" data-question="<%= @question.id %>">
+      <% @question.comments.each do |comment| %>
+        <%= render 'shared/comment_snippet', { comment: comment } %>
+      <% end %>
+    </ul>
+
+
+    <% if session[:user_id] %>
+      <p class="new_question_comment_errors" data-question="<%= @question.id %>"></p>
+      <%= form_for @comment, html: { remote: true, data: { question: @question.id } } do |f| %>
+        <%= f.hidden_field :commentable_type, :value => "Question" %>
+        <%= f.hidden_field :commentable_id, :value => @question.id %>
+        <%= f.text_area :content, cols: "40", rows: "3", placeholder: "pump up the comments!" %>
+        <%= f.submit "Comment" %>
+      <% end %>
     <% end %>
-  </ul>
-
-
-  <% if session[:user_id] %>
-    <p class="new_question_comment_errors" data-question="<%= @question.id %>"></p>
-    <%= form_for @comment, html: { remote: true, data: { question: @question.id } } do |f| %>
-      <%= f.hidden_field :commentable_type, :value => "Question" %>
-      <%= f.hidden_field :commentable_id, :value => @question.id %>
-      <%= f.text_area :content, cols: "40", rows: "3", placeholder: "pump up the comments!" %>
-      <%= f.submit "Comment" %>
-    <% end %>
-  <% end %>
+  </article>
 
 </section>
 
-<h2>Answers</h2>
+<h2>
+  <%= @answers.count %> Answer<% if @answers.count != 1 %>s<% end %>
+</h2>
 
 <section class="answer_holder">
 
