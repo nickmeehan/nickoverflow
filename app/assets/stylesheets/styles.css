@@ -5,7 +5,6 @@ body {
 .container {
   width: 80%;
   margin: 0 auto;
-  background-color: lightblue;
 }
 
 
@@ -32,7 +31,7 @@ nav ul {
 
 section.question_holder {
   width: 100%;
-  background-color: #E3CEA6;
+  background-color: #94DE90;
   border-radius: 0.25em;
 }
 
@@ -45,12 +44,11 @@ section.question_holder article {
 ul.answer_feed {
   width: 100%;
   padding: 0;
-  background-color: green;
 }
 
 ul.answer_feed li {
   padding: 2em 1em;
-  background-color: #F2C777;
+  background-color: #94DE90;
   margin: 1em 0em;
   border-radius: 0.25em;
 }
