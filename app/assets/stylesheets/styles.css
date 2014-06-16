@@ -53,6 +53,18 @@ ul.answer_feed li {
   border-radius: 0.25em;
 }
 
+ul.answer_feed li div {
+  display: inline-block;
+}
+
+h4 {
+  margin: 0.5em 0em;
+}
+
+ul.answer_comments_holder li {
+  padding: 0;
+}
+
 ul.answer_feed li p, p.question_info {
   font-size: 0.8em;
 }
@@ -80,4 +92,48 @@ input {
 
 p.new_answer_errors {
   color: #40DB40;
+}
+
+ul.question_comments_holder li {
+  font-size: 0.8em;
+}
+
+input[type="submit"] {
+  border: none;
+  background-color: #0C6B07;
+  color: #D6D6D6;
+  padding: 0.5em;
+  border-radius: 0.25em;
+}
+
+.vote_count h2 {
+  margin: 2px;
+}
+
+.non_vote_content {
+  width: 70%;
+}
+
+.answer_votes {
+  position: relative;
+  top: -51px;
+  display: block;
+  width: 15%;
+}
+
+.answer_votes form {
+  position: relative;
+  left: 20%;
+  text-align: center;
+}
+
+.vote_count {
+  position: relative;
+  left: 40%;
+}
+
+@media (max-width: 700px) {
+  textarea {
+    width: 100%;
+  }
 }
