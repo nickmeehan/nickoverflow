@@ -1,6 +1,27 @@
 <li>
-  <h4><%= answer.content %></h4>
-  <p><%= "by #{answer.user.username} on #{answer.created_at.strftime("%A %b %d %Y")} at #{answer.created_at.strftime("%I:%M %p")}" %></p>
+  <div class="non_vote_content">
+    <h4><%= answer.content %></h4>
+    <p><%= "by #{answer.user.username} on #{answer.created_at.strftime("%A %b %d %Y")} at #{answer.created_at.strftime("%I:%M %p")}" %></p>
+
+    <hr>
+
+    <ul class="answer_comments_holder" data-answer="<%= answer.id %>">
+      <% answer.comments.each do |comment| %>
+        <%= render 'shared/comment_snippet', { comment: comment } %>
+      <% end %>
+    </ul>
+    
+    <% if session[:user_id] %>
+      <p class="new_answer_comment_errors" data-answer="<%= answer.id %>"></p>
+      <%= form_for @comment, html: { remote: true, data: { answer: answer.id } } do |f| %>
+        <%= f.hidden_field :commentable_type, :value => "Answer" %>
+        <%= f.hidden_field :commentable_id, :value => answer.id %>
+        <%= f.text_area :content, cols: "40", rows: "3", placeholder: "pump up the comments!" %>
+        <%= f.submit "Comment" %>
+      <% end %>
+    <% end %>
+  </div>
+
   <% if session[:user_id] %>
     <div class="answer_votes" data-answer="<%= answer.id %>">
       <%= form_for @vote, html: { remote: true, data: { answer: answer.id } } do |f| %>
@@ -12,7 +33,7 @@
         <%= f.submit "Upvote" %>
       <% end %>
 
-      <div class="vote_count"><%= answer.vote_counts %></div>
+      <div class="vote_count"><h2><%= answer.vote_counts %></h2></div>
     
       <%= form_for @vote, html: { remote: true, data: { answer: answer.id } } do |f| %>
         <%= f.hidden_field :votable_type, :value => "Answer" %>
