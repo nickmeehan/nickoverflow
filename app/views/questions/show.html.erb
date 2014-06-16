@@ -9,6 +9,7 @@
       <%= link_to "Delete", question_path(@question), method: :delete %>
     <% end %><br>
 
+    <hr>
     <ul class="question_comments_holder" data-question="<%= @question.id %>">
       <% @question.comments.each do |comment| %>
         <%= render 'shared/comment_snippet', { comment: comment } %>
