@@ -133,7 +133,38 @@ input[type="submit"] {
 }
 
 @media (max-width: 700px) {
+
+  input {
+    width: 100%;
+  }
+
   textarea {
     width: 100%;
+  }
+
+  .non_vote_content {
+    width: 100%;
+  }
+
+  .answer_votes {
+    position: relative;
+    top: 2em;
+    display: block;
+    width: 100%;
+  }
+
+  .answer_votes form {
+    position: relative;
+    left: 0;
+    text-align: center;
+  }
+
+  .vote_count {
+    position: relative;
+    left: 45%;
+  }
+
+  ul.answer_feed li div {
+    display: block;
   }
 }
