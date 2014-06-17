@@ -1,4 +1,7 @@
 <li>
-  <h3><%= link_to question.title, question_path(question) %></h3>
-  <%= question.body %>
+	<article>
+	  <h3><%= link_to question.title, question_path(question) %></h3>
+	  <%= question.body %>
+	  <p class="question_info"><%= "by #{question.user.username} on #{question.created_at.strftime("%A %b %d %Y")} at #{question.created_at.strftime("%I:%M %p")} " %></p>
+	</article>
 </li>
