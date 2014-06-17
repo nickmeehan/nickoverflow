@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Nickoverflow</title>
+  <meta name="viewport" content="width=device-width">
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -11,8 +12,8 @@
     <ul>
       <li><%= link_to "Home", root_path %></li>
       <% if session[:user_id] %>
-        <li> || <%= link_to "New Question", new_question_path %> || </li>
-        <li><%= link_to "Profile", user_path(session[:user_id]) %> || </li>
+        <li><%= link_to "New Question", new_question_path %></li>
+        <li><%= link_to "Profile", user_path(session[:user_id]) %></li>
         <li><%= link_to "Sign-Out", session_path(session[:user_id]), method: :delete %></li>
       <% else %>
         <li><%= link_to "Sign-Up", new_user_path %></li>

@@ -3,14 +3,15 @@ function AnswerVotesView() {
 	this.openingDataKeySelector = '[data-answer=';
 	this.closingDataKeySelector = ']';
 	this.voteCountSelector = '.vote_count'
+	this.voteCountText = 'h2'
 }
 
 AnswerVotesView.prototype = {
 	getVoteCountHolder: function(targetId) {
-		return $(this.openingDataKeySelector + targetId + this.closingDataKeySelector + this.voteSelector + ' ' + this.voteCountSelector)
+		return $(this.openingDataKeySelector + targetId + this.closingDataKeySelector + this.voteSelector + ' ' + this.voteCountSelector + ' ' + this.voteCountText)
 	},
 	updateVoteCount: function(event, data) {
 		var $voteCountHolder = this.getVoteCountHolder(data.voted_on_id)
-		$voteCountHolder.html(data.vote_count)
+		$voteCountHolder.text(data.vote_count)
 	}
 }
