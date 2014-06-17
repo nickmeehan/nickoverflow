@@ -18,7 +18,8 @@ class SessionsController < ApplicationController
   end
 
   def demo
-    session[:user_id] = 1
+    @user = User.find_by_email('demo@demo.com')
+    session[:user_id] = @user.id
     redirect_to root_path
   end
 end

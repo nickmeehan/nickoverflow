@@ -9,5 +9,5 @@ Nickoverflow::Application.routes.draw do
   resources :comments
   resources :votes
   resources :answers
-  post 'demo', to: 'sessions#demo'
+  get 'demo', to: 'sessions#demo'
 end
