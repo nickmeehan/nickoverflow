@@ -7,11 +7,11 @@ body {
   margin: 0 auto;
 }
 
-.new_question form, .edit_question form {
+.new_question form, .edit_question form, .new_user form, .new_session form {
   margin: 0 auto;
 }
 
-.new_question input, .edit_question input {
+.new_question input, .edit_question input, .new_user input, .new_session input {
   width: 400px;
   margin-top: 30px;
 }
@@ -162,7 +162,7 @@ input[type="submit"] {
 
 @media (max-width: 700px) {
 
-  .new_question input, .edit_question input {
+  .new_question input, .edit_question input, .new_user input, .new_session input {
     width: 100%;
   }
 
