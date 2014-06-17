@@ -31,6 +31,14 @@ class VotesController < ApplicationController
 	end
 
 	def destroy
+		# still need to figure out a way to validate if upvote/downvote clicked twice before
+		# entering this route
+		@vote = Vote.find_vote(params[:vote])
+		if @vote.destroy
+			render json: { voted_on_id: @vote.votable_id, vote_count: @vote.votable.vote_counts }
+		else
+			render json: { errors: @vote.errors.full_message }
+		end
 	end
 
 end
