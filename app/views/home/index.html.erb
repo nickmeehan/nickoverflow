@@ -1,8 +1,7 @@
 <h2>Questions</h2>
 <ul>
-	<section class="question_holder">
-	  <% @questions.each do |question| %>
-	    <%= render 'shared/question_snippet', question: question %>
-	  <% end %>
-	</section>
+  <% @questions.each do |question| %>
+    <%= render 'shared/question_snippet', question: question %>
+    <hr>
+  <% end %>
 </ul>
