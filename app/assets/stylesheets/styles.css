@@ -7,6 +7,19 @@ body {
   margin: 0 auto;
 }
 
+.new_question form, .edit_question form {
+  margin: 0 auto;
+}
+
+.new_question input, .edit_question input {
+  width: 400px;
+  margin-top: 30px;
+}
+
+.new_question textarea, .edit_question textarea {
+  width: 400px;
+  margin-top: 30px;
+}
 
 nav {
   margin-top: -16px;
@@ -23,6 +36,7 @@ nav li {
 ul {
   list-style: none;
   margin-left: 0em;
+  margin-right: 0em;
   padding: 0;
 }
 
@@ -37,7 +51,6 @@ section.question_holder {
 
 section.question_holder article {
   padding: 2em 1em;
-  /*background-color: #F2C777;*/
   margin: 1em 0em;
 }
 
@@ -134,6 +147,14 @@ input[type="submit"] {
 
 @media (max-width: 700px) {
 
+  .new_question input, .edit_question input {
+    width: 100%;
+  }
+
+  .new_question textarea, .edit_question textarea {
+    width: 100%;
+  }
+
   input {
     width: 100%;
   }
@@ -167,4 +188,21 @@ input[type="submit"] {
   ul.answer_feed li div {
     display: block;
   }
+}
+
+@media (max-width: 320px) {
+
+  nav {
+    height: 100px;
+    text-align: center;
+  }
+
+  nav ul {
+    padding: 0;
+  }
+  nav li {
+    padding: 2px;
+    display: block;
+  }
+
 }
