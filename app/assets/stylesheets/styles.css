@@ -127,6 +127,21 @@ input[type="submit"] {
   width: 70%;
 }
 
+.question_votes {
+  position: relative;
+  top: -151px;
+  left: 70%;
+  display: block;
+  width: 15%;
+}
+
+.question_votes form {
+  position: relative;
+  left: 20%;
+  text-align: center;
+}
+
+
 .answer_votes {
   position: relative;
   top: -51px;
@@ -167,6 +182,20 @@ input[type="submit"] {
     width: 100%;
   }
 
+  .question_votes {
+    position: relative;
+    top: 2em;
+    left: 0;
+    display: block;
+    width: 100%;
+  }
+
+  .question_votes form {
+    position: relative;
+    left: 0;
+    text-align: center;
+  }
+
   .answer_votes {
     position: relative;
     top: 2em;
@@ -192,6 +221,11 @@ input[type="submit"] {
 
 @media (max-width: 320px) {
 
+  body {
+    width: 100%;
+    overflow: hidden;
+  }
+
   nav {
     height: 100px;
     text-align: center;
@@ -203,6 +237,11 @@ input[type="submit"] {
   nav li {
     padding: 2px;
     display: block;
+  }
+
+  section.answer_holder {
+    width: 100%;
+    margin-right: -20px;
   }
 
 }
