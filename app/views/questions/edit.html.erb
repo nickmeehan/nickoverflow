@@ -1,10 +1,12 @@
-<% if @author_id == session[:user_id] %>
-  <%= form_for @question do |f| %>
-    <%= f.text_field :title %>
-    <%= f.text_area :body, :cols => "22", :rows => "7" %>
-    <%= f.submit "Edit Question" %>
-  <% end %>
-<% else %>
-  <p>I'm sorry, you don't have access to edit this question.</p>
-  <%= link_to "Home", root_path %>
-<% end %>
+<div class="edit_question">
+	<% if @author_id == session[:user_id] %>
+	  <%= form_for @question do |f| %>
+	    <%= f.text_field :title %>
+	    <%= f.text_area :body, :cols => "22", :rows => "7" %>
+	    <%= f.submit "Edit Question" %>
+	  <% end %>
+	<% else %>
+	  <p>I'm sorry, you don't have access to edit this question.</p>
+	  <%= link_to "Home", root_path %>
+	<% end %>
+</div>
